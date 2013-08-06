@@ -13,11 +13,14 @@ import (
 func check (url,port string) (urltime float64, urlsize int) {
 	t0 := time.Now()
 	client := &http.Client{}
+
+	// default case: HTTP request
 	domain := "http://"+url+":"+port
 	switch port {
 		case "80" : domain = "http://"+url;
 		case "443": domain = "https://"+url;
 	}
+
 	req, err := http.NewRequest("GET", domain, nil)
 	if err != nil {
 		// handle error
