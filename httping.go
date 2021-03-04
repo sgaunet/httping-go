@@ -2,68 +2,54 @@ package main
 
 import (
 	"fmt"
-	"time"
-	"os"
-	"net/http"
-	"log"
 	"io/ioutil"
+	"log"
+	"net/http"
+	"os"
 	"strconv"
+	"time"
 )
 
-func check (url,port string) (urltime float64, urlsize int) {
+func check(url string) (urltime float64, urlsize int, status int) {
 	t0 := time.Now()
 	client := &http.Client{}
 
-	// default case: HTTP request
-	domain := "http://"+url+":"+port
-	switch port {
-		case "80" : domain = "http://"+url;
-		case "443": domain = "https://"+url;
-	}
-
-	req, err := http.NewRequest("GET", domain, nil)
+	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
-		// handle error
-		log.Fatalf ("|----- I couldn't connect to %s", url)
+		log.Fatalf("Cannot connect to %s", url)
 	} else {
 		req.Proto = "HTTP/1.1"
 		req.ProtoMinor = 0
-		req.Header.Set("User-Agent", "GoLang httping v0.1")
+		req.Header.Set("User-Agent", "httping")
 
 		resp, err := client.Do(req)
 		if err != nil {
-        	        // handle error
-                	log.Fatalf ("|----- I couldn't connect to %s\n", url)
-	        } else {
+			log.Fatalf("Cannot connect to %s\n", url)
+		} else {
 			defer resp.Body.Close()
 			body, _ := ioutil.ReadAll(resp.Body)
 			url_size := len(body)
-
 			msec := time.Since(t0)
 			url_time := msec.Seconds() * float64(time.Second/time.Millisecond)
-
-			return url_time, url_size
+			statusCode := resp.StatusCode
+			return url_time, url_size, statusCode
 		}
 	}
 	return
 }
 
-func main () {
-	fmt.Printf ("GoLang httping v0.1 - PINGING %s\n", os.Args[1])
-
-	port := "80"
-	// Do we have port defined ?
-	if os.Args[2] != "" {
-		port = os.Args[2]
+func main() {
+	if len(os.Args) != 2 {
+		fmt.Println("Usage : httping <url>")
+		os.Exit(1)
 	}
 
+	url := os.Args[1]
 	seq := 0
-
-	// infinite loop
 	for {
-		seq = seq +1
-		t, s := check(os.Args[1], port)
-		fmt.Printf ("connected to %s:%s, seq=%d time=%s bytes=%d\n", os.Args[1], port, seq, strconv.FormatFloat(t, 'f', 3, 64), s)
-		time.Sleep(1 * time.Second)
+		seq = seq + 1
+		timeOfRequest, contentLength, statusCode := check(url)
+		fmt.Printf("connected to %s, seq=%d time=%s bytes=%d StatusCode=%d\n", url, seq, strconv.FormatFloat(timeOfRequest, 'f', 3, 64), contentLength, statusCode)
+		time.Sleep(200 * time.Millisecond)
 	}
 }
