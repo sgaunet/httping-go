@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -39,17 +40,22 @@ func check(url string) (urltime float64, urlsize int, status int) {
 }
 
 func main() {
-	if len(os.Args) != 2 {
-		fmt.Println("Usage : httping <url>")
+	var url string
+	var sleepMs int
+	flag.StringVar(&url, "u", "", "url to \"ping\"")
+	flag.IntVar(&sleepMs, "s", 200, "time to sleep between two tries. (default: 200)")
+	flag.Parse()
+
+	if len(url) == 0 {
+		flag.PrintDefaults()
 		os.Exit(1)
 	}
 
-	url := os.Args[1]
 	seq := 0
 	for {
 		seq = seq + 1
 		timeOfRequest, contentLength, statusCode := check(url)
 		fmt.Printf("connected to %s, seq=%d time=%s bytes=%d StatusCode=%d\n", url, seq, strconv.FormatFloat(timeOfRequest, 'f', 3, 64), contentLength, statusCode)
-		time.Sleep(200 * time.Millisecond)
+		time.Sleep(time.Duration(sleepMs) * time.Millisecond)
 	}
 }

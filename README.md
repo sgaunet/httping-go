@@ -1,6 +1,33 @@
-httping-go
-==========
+# httping
 
-GoLang httping v0.1
+httping is a small program to request http server in order to print statuscode and the time to get the response.
 
-I created this small program in order to learn Go Lang. It's connecting to the HOST specified as param1 on port param2 and it's doing a HTTP GET request, returning how long the request took (in ms) and how big is was the response (in bytes).
+Example :
+
+```
+$ httping -u https://www.github.com -s 500
+connected to https://www.github.com, seq=1 time=761.159 bytes=206779 StatusCode=200
+connected to https://www.github.com, seq=2 time=147.326 bytes=206779 StatusCode=200
+connected to https://www.github.com, seq=3 time=143.971 bytes=206779 StatusCode=200
+connected to https://www.github.com, seq=4 time=138.060 bytes=206779 StatusCode=200
+^Csignal: interrupt
+```
+
+
+# build
+
+```
+go build . 
+```
+
+# Usage
+
+```
+httping:
+  -s int
+        time to sleep between two tries. (default: 200) (default 200)
+  -u string
+        url to "ping"
+exit status 2
+```
+
