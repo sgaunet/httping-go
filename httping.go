@@ -39,13 +39,25 @@ func check(url string) (urltime float64, urlsize int, status int) {
 	return
 }
 
+var version string
+
+func printVersion() {
+	fmt.Println(version)
+}
+
 func main() {
 	var url string
 	var sleepMs int
+	var vOption bool
 	flag.StringVar(&url, "u", "", "url to \"ping\"")
+	flag.BoolVar(&vOption, "v", false, "Get version")
 	flag.IntVar(&sleepMs, "s", 200, "time to sleep between two tries. (default: 200)")
 	flag.Parse()
 
+	if vOption {
+		printVersion()
+		os.Exit(0)
+	}
 	if len(url) == 0 {
 		flag.PrintDefaults()
 		os.Exit(1)
