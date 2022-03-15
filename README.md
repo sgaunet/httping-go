@@ -13,13 +13,6 @@ connected to https://www.github.com, seq=4 time=138.060 bytes=206779 StatusCode=
 ^Csignal: interrupt
 ```
 
-
-# build
-
-```
-go build . 
-```
-
 # Usage
 
 ```
@@ -31,3 +24,17 @@ httping:
 exit status 2
 ```
 
+
+# build
+
+```
+go build . 
+```
+
+# task
+
+Use task to generate the binary and execute it when source code changes.
+
+```
+task -w run
+```

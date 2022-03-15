@@ -1,0 +1,24 @@
+# https://taskfile.dev
+version: '3'
+
+vars:
+  BINFILE: httping-go
+
+tasks:
+  default:
+    cmds:
+      #- echo "{{.GREETING}}"
+      - go build .
+      - upx httping-go
+    # silent: true
+    method: checksum
+    generates:
+      - "{{.BINFILE}}"
+  run:
+    deps: 
+    - default
+    sources:
+      - "*.go"
+    cmds:
+      - ./{{.BINFILE}} -u https://taskfile.dev
+    

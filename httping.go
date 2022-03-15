@@ -39,7 +39,7 @@ func check(url string) (urltime float64, urlsize int, status int) {
 	return
 }
 
-var version string
+var version string = "development"
 
 func printVersion() {
 	fmt.Println(version)
