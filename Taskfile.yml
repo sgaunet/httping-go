@@ -6,6 +6,11 @@ vars:
 
 tasks:
   default:
+    desc: "List all tasks"
+    cmds:
+      - task -a
+
+  build:
     desc: "Build the binary"
     cmds:
       #- echo "{{.GREETING}}"
