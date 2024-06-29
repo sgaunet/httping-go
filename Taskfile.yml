@@ -6,6 +6,7 @@ vars:
 
 tasks:
   default:
+    desc: "Build the binary"
     cmds:
       #- echo "{{.GREETING}}"
       - go build .
@@ -14,11 +15,12 @@ tasks:
     method: checksum
     generates:
       - "{{.BINFILE}}"
+
   run:
+    desc: "Run the binary"
     deps: 
     - default
     sources:
       - "*.go"
     cmds:
       - ./{{.BINFILE}} -u https://taskfile.dev
-    
