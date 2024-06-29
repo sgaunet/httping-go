@@ -19,3 +19,13 @@ tasks:
     desc: "Run the binary"
     cmds:
       - ./{{.BINFILE}} -u https://taskfile.dev
+
+  snapshot:
+    desc: "Create a snapshot release"
+    cmds:
+      - GITLAB_TOKEN="" goreleaser --clean --snapshot
+    
+  release:
+    desc: "Create a release"
+    cmds:
+      - GITLAB_TOKEN="" goreleaser --clean
