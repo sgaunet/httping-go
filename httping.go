@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"log"
 	"net/http"
 	"os"
@@ -28,7 +28,7 @@ func check(url string) (urltime float64, urlsize int, status int) {
 			log.Fatalf("Cannot connect to %s\n", url)
 		} else {
 			defer resp.Body.Close()
-			body, _ := ioutil.ReadAll(resp.Body)
+			body, _ := io.ReadAll(resp.Body)
 			url_size := len(body)
 			msec := time.Since(t0)
 			url_time := msec.Seconds() * float64(time.Second/time.Millisecond)
