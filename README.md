@@ -1,8 +1,9 @@
 [![GitHub release](https://img.shields.io/github/release/sgaunet/httping-go.svg)](https://github.com/sgaunet/httping-go/releases/latest)
 [![Go Report Card](https://goreportcard.com/badge/github.com/sgaunet/httping-go)](https://goreportcard.com/report/github.com/sgaunet/httping-go)
 ![GitHub Downloads](https://img.shields.io/github/downloads/sgaunet/httping-go/total)
-[![Maintainability](https://api.codeclimate.com/v1/badges/521044cee2493ab24cf9/maintainability)](https://codeclimate.com/github/sgaunet/httping-go/maintainability)
-[![License](https://img.shields.io/github/license/sgaunet/gocrypt.svg)](LICENSE)
+[![Snapshot Build](https://github.com/sgaunet/httping-go/actions/workflows/snapshot.yml/badge.svg)](https://github.com/sgaunet/httping-go/actions/workflows/snapshot.yml)
+[![Release Build](https://github.com/sgaunet/httping-go/actions/workflows/release.yml/badge.svg)](https://github.com/sgaunet/httping-go/actions/workflows/release.yml)
+[![License](https://img.shields.io/github/license/sgaunet/httping-go.svg)](LICENSE)
 
 # httping
 
