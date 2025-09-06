@@ -1,4 +1,3 @@
-dist
-.task
-httping-go
-/.devbox
+/dist
+/.task
+/httping-go
