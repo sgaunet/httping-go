@@ -15,7 +15,7 @@ tasks:
     cmds:
       - go build .
 
-  linter:
+  lint:
     desc: "Run the linter"
     cmds:
       - golangci-lint run
