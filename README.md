@@ -1,5 +1,4 @@
 [![GitHub release](https://img.shields.io/github/release/sgaunet/httping-go.svg)](https://github.com/sgaunet/httping-go/releases/latest)
-[![Go Report Card](https://goreportcard.com/badge/github.com/sgaunet/httping-go)](https://goreportcard.com/report/github.com/sgaunet/httping-go)
 ![GitHub Downloads](https://img.shields.io/github/downloads/sgaunet/httping-go/total)
 [![Snapshot Build](https://github.com/sgaunet/httping-go/actions/workflows/snapshot.yml/badge.svg)](https://github.com/sgaunet/httping-go/actions/workflows/snapshot.yml)
 [![Release Build](https://github.com/sgaunet/httping-go/actions/workflows/release.yml/badge.svg)](https://github.com/sgaunet/httping-go/actions/workflows/release.yml)
