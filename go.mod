@@ -1,3 +1,3 @@
-module sgaunet/httping-go
+module github.com/sgaunet/httping-go
 
 go 1.24

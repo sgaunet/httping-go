@@ -4,7 +4,8 @@ before:
   hooks:
     - go mod download
 builds:
-  - env:
+  - main: ./cmd/httping-go
+    env:
       - CGO_ENABLED=0
     ldflags:
       - -X main.version={{.Version}}
