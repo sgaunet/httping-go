@@ -13,7 +13,7 @@ tasks:
   build:
     desc: "Build the binary"
     cmds:
-      - go build .
+      - go build ./cmd/httping-go
 
   lint:
     desc: "Run the linter"
@@ -24,6 +24,7 @@ tasks:
     desc: "Run tests and report total coverage"
     cmds:
       - go test -coverpkg=./... -coverprofile=profile.cov ./...
+      - sed -i '' '/cmd/d' profile.cov
       - go tool cover -func profile.cov | grep '^total:'
 
   run:

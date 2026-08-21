@@ -22,6 +22,7 @@ jobs:
       - name: Compute coverage
         run: |
           go test -coverpkg=./... -coverprofile=profile.cov ./...
+          sed -i '/cmd/d' profile.cov    # exclude the thin main from coverage
           total=$(go tool cover -func profile.cov | grep '^total:' | awk '{print $3}' | sed "s/%//")
           rm profile.cov
           echo "COVERAGE_VALUE=${total}" >> "$GITHUB_ENV"

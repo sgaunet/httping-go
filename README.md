@@ -25,17 +25,35 @@ connected to https://www.github.com, seq=4 time=138.060 bytes=206779 StatusCode=
 ```
 httping:
   -s int
-        time to sleep between two tries. (default: 200) (default 200)
+        time to sleep between two tries, in milliseconds (default 200)
+  -t int
+        timeout of an HTTP request, in seconds (default 10)
   -u string
         url to "ping"
-exit status 2
+  -v    Get version
 ```
 
+A single HTTP client is reused across probes, so connections are pooled with
+keep-alive instead of being re-established for every request. Each request is
+bounded by `-t`, so an unresponsive endpoint is reported as an error and
+monitoring carries on instead of hanging.
+
+```
+$ httping -u https://www.github.com -s 500 -t 5
+```
+
+Press `Ctrl-C` to stop.
+
+# install
+
+```
+go install github.com/sgaunet/httping-go/cmd/httping-go@latest
+```
 
 # build
 
 ```
-go build . 
+go build ./cmd/httping-go
 ```
 
 # task
