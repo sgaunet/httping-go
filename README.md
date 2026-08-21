@@ -1,5 +1,6 @@
 [![GitHub release](https://img.shields.io/github/release/sgaunet/httping-go.svg)](https://github.com/sgaunet/httping-go/releases/latest)
 ![GitHub Downloads](https://img.shields.io/github/downloads/sgaunet/httping-go/total)
+[![Coverage](https://raw.githubusercontent.com/wiki/sgaunet/httping-go/coverage-badge.svg)](https://github.com/sgaunet/httping-go/actions/workflows/coverage.yml)
 [![Snapshot Build](https://github.com/sgaunet/httping-go/actions/workflows/snapshot.yml/badge.svg)](https://github.com/sgaunet/httping-go/actions/workflows/snapshot.yml)
 [![Release Build](https://github.com/sgaunet/httping-go/actions/workflows/release.yml/badge.svg)](https://github.com/sgaunet/httping-go/actions/workflows/release.yml)
 [![License](https://img.shields.io/github/license/sgaunet/httping-go.svg)](LICENSE)

@@ -20,6 +20,12 @@ tasks:
     cmds:
       - golangci-lint run
 
+  cover:
+    desc: "Run tests and report total coverage"
+    cmds:
+      - go test -coverpkg=./... -coverprofile=profile.cov ./...
+      - go tool cover -func profile.cov | grep '^total:'
+
   run:
     desc: "Run the binary"
     cmds:
