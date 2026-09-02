@@ -2,3 +2,4 @@
 /.task
 /httping-go
 /profile.cov
+/govulncheck.sarif

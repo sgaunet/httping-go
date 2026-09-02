@@ -5,6 +5,11 @@ vars:
   BINFILE: httping-go
 
 tasks:
+  vulncheck:
+    desc: "Scan dependencies for known vulnerabilities"
+    cmds:
+      - govulncheck ./...
+
   default:
     desc: "List all tasks"
     cmds:
