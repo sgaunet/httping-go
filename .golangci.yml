@@ -17,5 +17,7 @@ linters:
     - forbidigo
     - varnamelen
     - exhaustruct
+    - exhaustruct_v5
+    - gomodguard # deprecated; gomodguard_v2 stays enabled via default: all
     - tagliatelle
     - noinlineerr
